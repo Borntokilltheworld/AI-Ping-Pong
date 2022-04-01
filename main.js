@@ -23,6 +23,12 @@ var ball = {
 
 function setup(){
   var canvas =  createCanvas(700,600);
+  canvas.parent('parent');
+  video = createCapture(VIDEO);
+  video.size("400,300")
+  video.hide();
+  poseNet = ml5.poseNet(video,ModelLoaded);
+  posent.on('pose',gotPoses)
 }
 
 
@@ -161,4 +167,7 @@ function paddleInCanvas(){
   if(mouseY < 0){
     mouseY =0;
   }  
+}
+function ModelLoaded(){
+  console.log("ModelLoaded!");
 }
